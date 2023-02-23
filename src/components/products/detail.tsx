@@ -1,17 +1,12 @@
-import { Link } from "react-router-dom";
 import { Product } from "../../type";
 
-const ProductItem = ({
-  category,
-  description,
-  id,
-  image,
-  price,
-  rating,
-  title,
-}: Product) => (
-  <div className="product-item-list">
-    <Link to={`/products/${id}`}>
+const ProductItemDetail = ({
+  item: { category, description, image, price, rating, title },
+}: {
+  item: Product;
+}) => {
+  return (
+    <div className="product-item-detail">
       <div className="title">{title}</div>
       <div className="category">{category}</div>
       <div className="description">{description}</div>
@@ -20,8 +15,8 @@ const ProductItem = ({
       <div className="rating">
         {rating.rate}: {rating.count}
       </div>
-    </Link>
-  </div>
-);
+    </div>
+  );
+};
 
-export default ProductItem;
+export default ProductItemDetail;

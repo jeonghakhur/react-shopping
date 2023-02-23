@@ -1,10 +1,20 @@
 import { QueryClient } from "react-query";
-// import { getTodos, postTodo } from '../my-api'
 
 export const getClient = (() => {
   let client: QueryClient | null = null;
   return () => {
-    if (!client) client = new QueryClient({});
+    if (!client)
+      client = new QueryClient({
+        defaultOptions: {
+          queries: {
+            cacheTime: 1000 * 60 * 60 * 24,
+            staleTime: 1000 * 60,
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+            refetchOnReconnect: false,
+          },
+        },
+      });
     return client;
   };
 })();
@@ -24,15 +34,22 @@ export const fetcher = async ({
   params?: AnyObj;
 }) => {
   try {
-    const url = `${BASE_URL}/products`;
-    const fetchOption: RequestInit = {
+    let url = `${BASE_URL}${path}`;
+    const fetchOptions: RequestInit = {
       method,
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": BASE_URL,
       },
     };
-    const res = await fetch(url, fetchOption);
+    if (params) {
+      const searchParams = new URLSearchParams(params);
+      url += "?" + searchParams;
+    }
+
+    if (body) fetchOptions.body = JSON.stringify(body);
+
+    const res = await fetch(url, fetchOptions);
     const json = await res.json();
     return json;
   } catch (err) {

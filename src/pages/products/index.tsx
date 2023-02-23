@@ -12,13 +12,11 @@ const ProductList = () => {
   );
 
   return (
-    <div>
-      <ul>
-        {data?.map((product) => (
-          <ProductItem {...product} key={product.id} />
-        ))}
-      </ul>
-    </div>
+    <>
+      {data?.map((product) => (
+        <ProductItem {...product} key={product.id} />
+      ))}
+    </>
   );
 };
 

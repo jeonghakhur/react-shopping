@@ -1,25 +1,13 @@
 import { Link } from "react-router-dom";
-import { Product } from "../../type";
+import { PRODUCT } from "../../graphql/products";
 
-const ProductItem = ({
-  category,
-  description,
-  id,
-  image,
-  price,
-  rating,
-  title,
-}: Product) => (
+const ProductItem = ({ description, id, imageUrl, price, title }: PRODUCT) => (
   <div className="product-item-list">
     <Link to={`/products/${id}`}>
       <div className="title">{title}</div>
-      <div className="category">{category}</div>
       <div className="description">{description}</div>
-      <img src={image} alt="" />
+      <img src={imageUrl} alt="" />
       <div className="price">{price}</div>
-      <div className="rating">
-        {rating.rate}: {rating.count}
-      </div>
     </Link>
   </div>
 );

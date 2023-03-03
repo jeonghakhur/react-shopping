@@ -1,20 +1,17 @@
-import { Product } from "../../type";
+import { notifyManager } from "react-query";
+import { Product } from "../../graphql/products";
 
 const ProductItemDetail = ({
-  item: { category, description, image, price, rating, title },
+  item: { description, imageUrl, price, title },
 }: {
   item: Product;
 }) => {
   return (
     <div className="product-item-detail">
       <div className="title">{title}</div>
-      <div className="category">{category}</div>
       <div className="description">{description}</div>
-      <img src={image} alt="" />
+      <img src={imageUrl} alt="" />
       <div className="price">{price}</div>
-      <div className="rating">
-        {rating.rate}: {rating.count}
-      </div>
     </div>
   );
 };

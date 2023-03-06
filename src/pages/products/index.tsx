@@ -9,11 +9,11 @@ const ProductList = () => {
   );
 
   return (
-    <>
+    <div className="product-item-list">
       {data?.products?.map((product) => (
         <ProductItem {...product} key={product.id} />
       ))}
-    </>
+    </div>
   );
 };
 

@@ -1,4 +1,3 @@
-import { notifyManager } from "react-query";
 import { Product } from "../../graphql/products";
 
 const ProductItemDetail = ({

@@ -20,10 +20,10 @@ export const handlers = [
     )
   }),
   graphql.query(GET_PRODUCT, (req, res, ctx)  => {
-    console.log(req.id);
-    return res()
-    // return res(
-    //   ctx.data(mock_products.find(id === req.id))
-    // )
+    console.log(req)
+    // return res()
+    return res(
+      ctx.data(mock_products.find(product => product.id === req.variables.id))
+    )
   }),
 ]

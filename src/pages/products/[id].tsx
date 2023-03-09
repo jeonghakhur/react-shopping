@@ -12,7 +12,6 @@ const ProductDetail = () => {
   );
 
   if (!data) return null;
-  console.log(data);
 
   return <ProductItemDetail item={data} />;
 };

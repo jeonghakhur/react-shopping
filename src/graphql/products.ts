@@ -6,7 +6,7 @@ export type Product = {
   price: number;
   title: string;
   description: string;
-  createAt: string;
+  createdAt: string;
 };
 
 export type Products = {
@@ -20,18 +20,18 @@ const GET_PRODUCTS = gql`
     price
     title
     description
-    createAt
+    createdAt
   }
 `;
 
 export const GET_PRODUCT = gql`
-  query GET_PRODUCT {
+  query GET_PRODUCT($id: string) {
     id
     imageUrl
     price
     title
     description
-    createAt
+    createdAt
   }
 `;
 

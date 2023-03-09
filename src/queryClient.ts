@@ -8,8 +8,8 @@ export const getClient = (() => {
       client = new QueryClient({
         defaultOptions: {
           queries: {
-            cacheTime: 1000 * 60 * 60 * 24,
-            staleTime: 1000 * 60,
+            cacheTime: Infinity,
+            staleTime: Infinity,
             refetchOnMount: false,
             refetchOnWindowFocus: false,
             refetchOnReconnect: false,
@@ -21,7 +21,6 @@ export const getClient = (() => {
 })();
 
 const BASE_URL = "/";
-type AnyObj = { [key: string]: any };
 
 export const restFetcher = async ({
   method,
@@ -63,4 +62,5 @@ export const graphqlFetcher = (query: RequestDocument, variables = {}) =>
 
 export const QueryKeys = {
   PRODUCTS: "PRODUCTS",
+  CART: "CART",
 };

@@ -31,3 +31,21 @@ export const GET_CART = gql`
     }
   }
 `;
+
+export const UPDATE_CART = gql`
+  mutation UPDATE_CART {
+    cart(id: $id, amount: $amount) {
+      id
+      imageUrl
+      price
+      title
+      amount
+    }
+  }
+`;
+
+export const DELETE_CART = gql`
+  mutation DELETE_CART($id: string) {
+   id 
+  }
+`

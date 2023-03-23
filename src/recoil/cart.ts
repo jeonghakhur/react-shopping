@@ -1,28 +1,29 @@
 import { atom, selectorFamily, useRecoilValue } from "recoil";
+import { CartType } from '../graphql/cart'
 
-const cartState = atom<Map<string, number>>({
-  key: "cartState",
-  default: new Map(),
-});
 
-export const cartItemSelector = selectorFamily<number | undefined, string>({
-  key: "cartItem",
-  get:
-    (id: string) =>
-    ({ get }) => {
-      const carts = get(cartState);
-      return carts.get(id);
-    },
-  set:
-    (id: string) =>
-    ({ get, set }, newValue) => {
-      if (typeof newValue === "number") {
-        const newCart = new Map([...get(cartState)]);
+export const checkedCartState = atom<CartType[]>({
+  key: 'cartState',
+  default: [],
+})
 
-        newCart.set(id, newValue);
+// export const cartItemSelector = selectorFamily<number | undefined, string>({
+//   key: "cartItem",
+//   get:
+//     (id: string) =>
+//     ({ get }) => {
+//       const carts = get(cartState);
+//       return carts.get(id);
+//     },
+//   set:
+//     (id: string) =>
+//     ({ get, set }, newValue) => {
+//       if (typeof newValue === "number") {
+//         const newCart = new Map([...get(cartState)]);
 
-        set(cartState, newCart);
-        console.log(cartState);
-      }
-    },
-});
+//         newCart.set(id, newValue);
+
+//         set(cartState, newCart);
+//       }
+//     },
+// });

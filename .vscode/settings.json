@@ -1,0 +1,20 @@
+{
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "all",
+  "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+  "editor.formatOnSave": true,
+  "files.associations": {
+    ".*rc": "jsonc",
+    "*.json": "jsonc"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": null
+  },
+  "stylelint.validate": ["css", "scss"],
+  "csscomb.formatOnSave": true,
+  "csscomb.ignoreFilesOnSave": ["dist/css/*", "scss/index.scss"]
+}
